@@ -2,6 +2,26 @@ const mongoose = require('mongoose')
 
 const EmergencyContact = mongoose.Schema(
   {
+    bloodType: {
+      type: String,
+      required: true,
+    },
+    temperature: {
+      type: number,
+      required: true,
+    },
+    pulse: {
+      type: number,
+      required: true,
+    },
+    SP02:{
+      type: number,
+      required: true,
+    }
+  }
+)
+const patientVitals = mongoose.Schema(
+  {
     name: {
       type: String,
       required: true,
@@ -29,7 +49,7 @@ const patientSchema = mongoose.Schema(
         },
         otherName: {
           type: String,
-          required: [true, "Please enter a product name"]
+          required: [true, "Please enter a patient other names"]
         },
         gender: {
             type: string,
@@ -42,7 +62,9 @@ const patientSchema = mongoose.Schema(
         address: {
             type: String,
             required: true,
-        }
+        },
+        emergencyContact : EmergencyContact,
+        patientVitals: patientVitals,
         
     },
     {
