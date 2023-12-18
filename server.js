@@ -11,6 +11,15 @@ app.post('/patient', (req, res) => {
   res.send(req.body)
 })
 
+app.get('/products/:id', async(req, res) =>{
+  try {
+      const {id} = req.params;
+      const product = await Patient.findById(id);
+      res.status(200).json(product);
+  } catch (error) {
+      res.status(500).json({message: error.message})
+  }
+})
 app.post('/patient', async(req, res) => {
   try {
       const product = await Patient.create(req.body)
@@ -25,12 +34,12 @@ app.post('/patient', async(req, res) => {
 app.put('/patient/:id', async(req, res) => {
   try {
       const {id} = req.params;
-      const product = await Product.findByIdAndUpdate(id, req.body);
+      const product = await Patient.findByIdAndUpdate(id, req.body);
       // we cannot find any product in database
       if(!product){
           return res.status(404).json({message: `cannot find any product with ID ${id}`})
       }
-      const updatedProduct = await Product.findById(id);
+      const updatedProduct = await Patient.findById(id);
       res.status(200).json(updatedProduct);
       
   } catch (error) {
