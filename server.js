@@ -11,16 +11,16 @@ app.post('/patient', (req, res) => {
   res.send(req.body)
 })
 
-app.post('/patient', async(req, res) => {
-  try {
-      const product = await Patient.create(req.body)
-      res.status(200).json(product);
+// app.post('/patient', async(req, res) => {
+//   try {
+//       const product = await Patient.create(req.body)
+//       res.status(200).json(product);
       
-  } catch (error) {
-      console.log(error.message);
-      res.status(500).json({message: error.message})
-  }
-})
+//   } catch (error) {
+//       console.log(error.message);
+//       res.status(500).json({message: error.message})
+//   }
+// })
 
 app.put('/patient/:id', async(req, res) => {
   try {
