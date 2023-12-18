@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const Patient = require('patient_models')
 
 app.get('/', (req, res) => {
   res.send('Hello NODE API')
