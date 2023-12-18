@@ -1,3 +1,4 @@
+const { Timestamp } = require('mongodb')
 const mongoose = require('mongoose')
 
 const EmergencyContact = mongoose.Schema(
@@ -37,39 +38,61 @@ const patientVitals = mongoose.Schema(
   }
 )
 
-const patientSchema = mongoose.Schema(
-    {
-        patientID: {
-          type: String,
-          required: [true, "Please enter a patient id"]
-        },
-        surname: {
-            type: String,
-            required: [true, "Please enter a patient name"]
-        },
-        otherName: {
-          type: String,
-          required: [true, "Please enter a patient other names"]
-        },
-        gender: {
-            type: string,
-            required: true,      
-        },
-        phone: {
-            type: Number,
-            required: true,
-        },
-        address: {
-            type: String,
-            required: true,
-        },
-        emergencyContact : EmergencyContact,
-        patientVitals: patientVitals,
-        
+const patientVisitation = mongoose.Schema(
+  {
+    patientID: {
+      type: String,
+      required: [true, "Please enter a patient id"]
     },
-    {
-        timestamps: true
-    }
+    Date: {
+      type: Date,
+      required: true,
+    },
+    Time: {
+      type: string,
+      required: true,
+    },
+    visitationType: {
+      type: string,
+      required: true,
+    },
+  }
+)
+
+
+const patientSchema = mongoose.Schema(
+  {
+      patientID: {
+        type: String,
+        required: [true, "Please enter a patient id"]
+      },
+      surname: {
+          type: String,
+          required: [true, "Please enter a patient name"]
+      },
+      otherName: {
+        type: String,
+        required: [true, "Please enter a patient other names"]
+      },
+      gender: {
+          type: string,
+          required: true,      
+      },
+      phone: {
+          type: Number,
+          required: true,
+      },
+      address: {
+          type: String,
+          required: true,
+      },
+      emergencyContact : EmergencyContact,
+      patientVitals: patientVitals,
+      patientVisitation : patientVisitation,
+  },
+  {
+      timestamps: true
+  }
 )
 
 
